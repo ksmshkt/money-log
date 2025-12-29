@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>一覧</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <h1>支出項目一覧</h1>
+  <table>
+    <tr th:each="item : ${items}">
+      <td th:text="${item.name}"></td>
+      <td th:text="${item.cost}"></td>
+      <td th:text="${item.time}"></td>
+    </tr>
+  </table>
+</body>
+
+</html>
