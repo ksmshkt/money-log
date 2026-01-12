@@ -2,13 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.expensesmanager.repository.ItemMapper">
 
+<resultMap id="ItemResultMap" type="com.example.expensesmanager.api.response.ItemBaseResponse">
+    <id     property="id"         column="id"/>
+    <result property="name"       column="name"/>
+    <result property="cost"      column="cost"/>
+    <result property="time"  column="time"/>
+</resultMap>
+
   <select id="findAll" resultType="com.example.expensesmanager.entity.Item">
     select * from items order by time desc;
   </select>
 
-  <insert id="insert">
+  <insert id="insert" resultMap="ItemResultMap">
     insert into items (name, cost, time)
     values (#{name}, #{cost}, now())
+    RETURNING name, cost, time
   </insert>
 
 </mapper>

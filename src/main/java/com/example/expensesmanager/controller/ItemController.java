@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.expensesmanager.entity.Item;
@@ -23,18 +22,6 @@ public class ItemController {
 
   @GetMapping
   public String listItems(Model model) {
-    List<Item> items = itemService.findAll();
-
-    model.addAttribute("items", items);
-    model.addAttribute("itemForm", new ItemForm());
-
-    return "item-list";
-  }
-
-  @PostMapping("/add")
-  public String addItem(ItemForm itemForm, Model model) {
-    itemService.add(itemForm.getName(), itemForm.getCost());
-
     List<Item> items = itemService.findAll();
 
     model.addAttribute("items", items);

@@ -4,14 +4,14 @@
       <span class="close-btn" id="closeModalBtn">&times;</span>
 
       <h2>入力フォーム</h2>
-      <form th:action="@{/items/add}" th:object="${itemForm}" method="post">
+      <form id="itemForm">
         <div class="form-group">
           <label>項目</label>	
-          <input type="text" th:field="*{name}">
+          <input type="text" id="name">
         </div>
         <div class="form-group">
           <label>金額</label>
-          <input type="number" th:field="*{cost}">
+          <input type="number" id="cost">
         </div>	
         <button type="submit">送信</button>
       </form>

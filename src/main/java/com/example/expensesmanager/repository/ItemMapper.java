@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.expensesmanager.api.response.ItemBaseResponse;
 import com.example.expensesmanager.entity.Item;
 
 @Mapper
@@ -11,5 +12,6 @@ public interface ItemMapper {
 
   List<Item> findAll();
 
-  int insert(String name, int cost);
+  ItemBaseResponse insert(String name, Integer cost);
+
 }

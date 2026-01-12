@@ -11,7 +11,7 @@ public class Item {
 
   String name;
 
-  int cost;
+  Integer cost;
 
   LocalDate time;
 
