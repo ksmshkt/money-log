@@ -1,55 +1,43 @@
 @charset "UTF-8";
 
+.container {
+  width: 70%;
+  margin: 40px auto;
+}
+
+/* テーブル */
 table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+  table-layout: fixed;
 }
 
-table th:first-child {
-  border-radius: 5px 0 0 0;
-}
-
-table th:last-child {
-  border-radius: 0 5px 0 0;
-  border-right: 1px solid #3c6690;
-}
-
-table th {
+th,
+td {
+  padding: 10px 12px;
   text-align: center;
-  color: white;
-  background: linear-gradient(#829ebc, #225588);
-  border-left: 1px solid #3c6690;
-  border-top: 1px solid #3c6690;
-  border-bottom: 1px solid #3c6690;
-  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.3) inset;
-  width: 25%;
-  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-table td {
-  text-align: center;
-  border-left: 1px solid #a8b7c5;
-  border-bottom: 1px solid #a8b7c5;
-  border-top: none;
-  box-shadow: 0px -3px 5px 1px #eee inset;
-  width: 25%;
-  padding: 10px 0;
+th {
+  color: #666;
 }
 
-table td:last-child {
-  border-right: 1px solid #a8b7c5;
+tr:hover td {
+  background-color: #fafafa;
 }
 
-table tr:last-child td:first-child {
-  border-radius: 0 0 0 5px;
+/* モーダル */
+.modal-window {
+  background: white;
+  padding: 20px;
+  width: 350px;
+  border-radius: 8px;
+  position: relative;
 }
 
-table tr:last-child td:last-child {
-  border-radius: 0 0 5px 0;
-}
-
-/* 背景（黒い半透明） */
 .modal-overlay {
   display: none;
   /* 初期は非表示 */
@@ -63,16 +51,6 @@ table tr:last-child td:last-child {
   align-items: center;
 }
 
-/* モーダル本体 */
-.modal-window {
-  background: white;
-  padding: 20px;
-  width: 350px;
-  border-radius: 8px;
-  position: relative;
-}
-
-/* 閉じるボタン */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -81,7 +59,6 @@ table tr:last-child td:last-child {
   cursor: pointer;
 }
 
-/* フォーム */
 .form-group {
   margin-bottom: 15px;
 }
@@ -90,4 +67,38 @@ input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+}
+
+/* 追加ボタン */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #2563eb; /* 落ち着いたブルー */
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.icon-btn:hover {
+  background: #1d4ed8;
+}
+
+.icon-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.icon-btn:focus {
+  outline: none;
 }
