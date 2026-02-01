@@ -29,6 +29,18 @@ tr:hover td {
   background-color: #fafafa;
 }
 
+.col-id {
+  display: none;
+}
+
+tr[data-item] {
+  cursor: pointer;
+}
+
+tr[data-item]:hover {
+  background: #f5f5f5;
+}
+
 /* モーダル */
 .modal-window {
   background: white;

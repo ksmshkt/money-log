@@ -6,10 +6,20 @@
     SELECT id, name, cost, created_at FROM items ORDER BY created_at DESC;
   </select>
 
+  <select id="selectById" resultType="com.example.expensesmanager.entity.Item">
+    SELECT id, name, cost, created_at FROM items WHERE id = #{id};
+  </select>
+
   <select id="insert" resultType="com.example.expensesmanager.entity.Item">
     INSERT INTO items (name, cost)
     VALUES (#{name}, #{cost})
     RETURNING id, name, cost, created_at
   </select>
+
+  <update id="update">
+    UPDATE items
+    SET name = #{name}, cost = #{cost}
+    WHERE id = #{id}
+  </update>
 
 </mapper>

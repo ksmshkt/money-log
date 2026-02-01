@@ -1,10 +1,7 @@
 package com.example.expensesmanager.api.controller;
 
 import com.example.expensesmanager.api.response.ItemBaseResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.expensesmanager.api.request.ItemBaseRequest;
 import com.example.expensesmanager.service.ItemService;
@@ -24,4 +21,12 @@ public class ItemApiController {
 
     return res;
   }
+
+  @PutMapping("/{id}")
+  public ItemBaseResponse updateItem(@PathVariable Long id, @RequestBody ItemBaseRequest itemBaseRequest) {
+    ItemBaseResponse res = itemService.update(itemBaseRequest);
+
+    return res;
+  }
+
 }

@@ -32,7 +32,17 @@ public class ItemService {
     BeanUtils.copyProperties(item, res);
 
     return res;
+  }
 
+  @Transactional
+  public ItemBaseResponse update(ItemBaseRequest itemBaseRequest) {
+    itemMapper.update(itemBaseRequest.getId(), itemBaseRequest.getName(), itemBaseRequest.getCost());
+    Item item = itemMapper.selectById(itemBaseRequest.getId());
+
+    ItemBaseResponse res = new ItemBaseResponse();
+    BeanUtils.copyProperties(item, res);
+
+    return res;
   }
 
 }

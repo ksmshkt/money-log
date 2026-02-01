@@ -10,18 +10,22 @@
 
   <body>
     <div class="container">
-      <button id="itemAdd" class="icon-btn">＋</button>
-      <div th:replace="fragments/item-add :: item-add"></div>
+      <button id="itemAdd" class="icon-btn" data-modal-open data-mode="create">＋</button>
+      <div th:replace="fragments/item-modal :: item-modal"></div>
       <table>
         <thead>
           <tr>
             <th>item</th>
-            <th>cost(yen)</th>
+            <th>cost (¥)</th>
             <th>date</th>
           </tr>
         </thead>
         <tbody id="items-body">
-          <tr th:each="item : ${items}">
+          <tr th:each="item : ${items}" data-item
+              th:data-id="${item.id}"
+              th:data-name="${item.name}"
+              th:data-cost="${item.cost}"
+          >
             <td th:text="${item.name}"></td>
             <td th:text="${item.cost}"></td>
             <td th:text="${item.createdAt}"></td>

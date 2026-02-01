@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Item {
 
-  int id;
+  Long id;
 
   String name;
 

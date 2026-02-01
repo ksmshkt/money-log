@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 public class ItemBaseResponse {
 
+  Long id;
+  
   private String name;
 
   private Integer cost;
