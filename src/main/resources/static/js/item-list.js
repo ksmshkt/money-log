@@ -1,3 +1,5 @@
+import { validateItemForm } from "./item-validate.js";
+
 const overlay = document.getElementById("modalOverlay");
 const form = document.getElementById("itemForm");
 const openModal = () => overlay.style.display = "flex";
@@ -38,6 +40,8 @@ document.getElementById("items-body").addEventListener("click", e => {
 // フォーム送信時
 document.getElementById("itemForm").addEventListener("submit", async function(e) {
   e.preventDefault();
+
+  if (!validateItemForm()) return;
 
   const data = {
     id: document.getElementById("id").value.trim(),
