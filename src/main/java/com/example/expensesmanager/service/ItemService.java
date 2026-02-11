@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.expensesmanager.api.request.ItemBaseRequest;
 import com.example.expensesmanager.api.response.ItemBaseResponse;
+import com.example.expensesmanager.dto.ItemSummary;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +21,16 @@ public class ItemService {
   private final ItemMapper itemMapper;
 
   @Transactional(readOnly = true)
-  public List<Item> findByYearAndMonth(int year, int month) {
-    return itemMapper.findByYearAndMonth(year, month);
+  public ItemSummary findByYearAndMonth(int year, int month) {
+    List<Item> items = itemMapper.findByYearAndMonth(year, month);
+
+    int totalCost = items.stream()
+            .map(Item::getCost)
+            .filter(cost -> cost != null)
+            .mapToInt(Integer::intValue)
+            .sum();
+
+    return new ItemSummary(items, totalCost);
   }
 
   @Transactional

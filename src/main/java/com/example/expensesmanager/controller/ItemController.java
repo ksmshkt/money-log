@@ -3,6 +3,7 @@ package com.example.expensesmanager.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.expensesmanager.dto.ItemSummary;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +40,11 @@ public class ItemController {
     int m = (month != null) ? month : now.getMonthValue();
 
     // 指定年月のアイテムを取得
-    List<Item> items = itemService.findByYearAndMonth(y, m);
+    ItemSummary itemSummary = itemService.findByYearAndMonth(y, m);
 
-    model.addAttribute("items", items);
+    model.addAttribute("items", itemSummary.items());
     model.addAttribute("itemForm", new ItemForm());
-
-    // 現在表示中の年月もビューに渡す
+    model.addAttribute("totalCost", itemSummary.totalCost());
     model.addAttribute("currentYear", y);
     model.addAttribute("currentMonth", m);
 

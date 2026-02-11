@@ -11,19 +11,26 @@
   <body>
     <div class="container">
       <div class="month-header">
-        <a class="month-nav"
-           th:href="@{/items(year=${currentYear}, month=${currentMonth - 1})}">
-          ← Prev
-        </a>
+        <div class="month-nav-row">
+          <a class="month-nav"
+             th:href="@{/items(year=${currentYear}, month=${currentMonth - 1})}">
+            ◀ Prev
+          </a>
 
-        <span class="month-title"
-              th:text="|${currentYear} / ${currentMonth}|"></span>
+          <span class="month-title"
+                th:text="|${currentYear} / ${currentMonth}|"></span>
 
-        <a class="month-nav"
-           th:href="@{/items(year=${currentYear}, month=${currentMonth + 1})}">
-          Next →
-        </a>
+          <a class="month-nav"
+             th:href="@{/items(year=${currentYear}, month=${currentMonth + 1})}">
+            Next ▶
+          </a>
+        </div>
+
+        <div class="summary">
+          Total <strong th:text="|¥ ${totalCost}|"></strong>
+        </div>
       </div>
+
       <button id="itemAdd" class="icon-btn" data-modal-open data-mode="create">＋</button>
       <div th:replace="fragments/item-modal :: item-modal"></div>
       <table>
