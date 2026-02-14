@@ -1,5 +1,6 @@
 package com.example.expensesmanager.repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,11 +14,11 @@ public interface ItemMapper {
 
   List<Item> findByYearAndMonth(@Param("year") int year, @Param("month") int month);
 
-  Item insert(@Param("name") String name, @Param("cost") Integer cost, @Param("createdAt") LocalDateTime createdAt);
+  Item insert(@Param("name") String name, @Param("cost") Integer cost, @Param("spentAt") LocalDate spentAt);
 
   Item selectById(@Param("id") Long id);
 
-  int update(@Param("id") Long id, @Param("name") String name, @Param("cost") Integer cost, @Param("createdAt") LocalDateTime createdAt);
+  int update(@Param("id") Long id, @Param("name") String name, @Param("cost") Integer cost, @Param("spentAt") LocalDate spentAt);
 
   int delete(@Param("id") Long id);
 }

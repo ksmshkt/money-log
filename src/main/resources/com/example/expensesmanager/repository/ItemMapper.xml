@@ -3,26 +3,26 @@
 <mapper namespace="com.example.expensesmanager.repository.ItemMapper">
 
   <select id="findByYearAndMonth" resultType="com.example.expensesmanager.entity.Item">
-    SELECT id, name, cost, created_at
+    SELECT id, name, cost, spent_at
     FROM items
-    WHERE EXTRACT(YEAR FROM created_at) = #{year}
-    AND EXTRACT(MONTH FROM created_at) = #{month}
-    ORDER BY created_at DESC
+    WHERE EXTRACT(YEAR FROM spent_at) = #{year}
+    AND EXTRACT(MONTH FROM spent_at) = #{month}
+    ORDER BY spent_at DESC
   </select>
 
   <select id="selectById" resultType="com.example.expensesmanager.entity.Item">
-    SELECT id, name, cost, created_at FROM items WHERE id = #{id};
+    SELECT id, name, cost, spent_at FROM items WHERE id = #{id};
   </select>
 
   <select id="insert" resultType="com.example.expensesmanager.entity.Item">
-    INSERT INTO items (name, cost, created_at)
-    VALUES (#{name}, #{cost}, #{createdAt})
-    RETURNING id, name, cost, created_at
+    INSERT INTO items (name, cost, spent_at)
+    VALUES (#{name}, #{cost}, #{spentAt})
+    RETURNING id, name, cost, spent_at
   </select>
 
   <update id="update">
     UPDATE items
-    SET name = #{name}, cost = #{cost}, created_at = #{createdAt}
+    SET name = #{name}, cost = #{cost}, spent_at = #{spentAt}
     WHERE id = #{id}
   </update>
 

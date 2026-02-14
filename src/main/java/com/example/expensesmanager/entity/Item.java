@@ -14,6 +14,6 @@ public class Item {
 
   Integer cost;
 
-  LocalDate createdAt;
+  LocalDate spentAt;
 
 }

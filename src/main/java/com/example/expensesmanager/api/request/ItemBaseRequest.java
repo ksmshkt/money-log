@@ -24,6 +24,6 @@ public class ItemBaseRequest {
 
   @NotNull
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate createdAt;
+  private LocalDate spentAt;
 
 }

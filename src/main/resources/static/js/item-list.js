@@ -22,7 +22,7 @@ overlay.addEventListener("click", (e) => {
 document.getElementById("itemAdd").addEventListener("click", e => {
   form.reset();
   deleteBtn.style.display = "none";
-  document.getElementById("createdAt").value = new Date().toISOString().split("T")[0];
+  document.getElementById("spentAt").value = new Date().toISOString().split("T")[0];
   openModal();
 })
 
@@ -31,12 +31,12 @@ document.getElementById("items-body").addEventListener("click", e => {
   const row = e.target.closest('[data-item]');
   if (!row) return;
 
-  const { id, name, cost, createdAt } = row.dataset;
+  const { id, name, cost, spentAt } = row.dataset;
 
   form.id.value = id;
   form.name.value = name;
   form.cost.value = cost;
-  form.createdAt.value = createdAt;
+  form.spentAt.value = spentAt;
 
   deleteBtn.style.display = "inline-block";
   openModal();
@@ -52,7 +52,7 @@ document.getElementById("itemForm").addEventListener("submit", async function(e)
     id: document.getElementById("id").value.trim(),
     name: document.getElementById("name").value,
     cost: document.getElementById("cost").value,
-    createdAt: document.getElementById("createdAt").value
+    spentAt: document.getElementById("spentAt").value
   };
 
   if (data.id) {
@@ -127,12 +127,12 @@ const appendItem = item => {
   tr.dataset.id = item.id;
   tr.dataset.name = item.name;
   tr.dataset.cost = item.cost;
-  tr.dataset.createdAt = item.createdAt;
+  tr.dataset.spentAt = item.spentAt;
 
   tr.innerHTML = `
     <td>${item.name}</td>
     <td>${item.cost}</td>
-    <td>${item.createdAt}</td>
+    <td>${item.spentAt}</td>
   `;
 
   tbody.prepend(tr);
@@ -146,11 +146,11 @@ function updateRow(item) {
   const tds = row.querySelectorAll('td');
   tds[0].textContent = item.name;
   tds[1].textContent = item.cost;
-  tds[2].textContent = item.createdAt;
+  tds[2].textContent = item.spentAt;
 
   row.dataset.name = item.name;
   row.dataset.cost = item.cost;
-  row.dataset.createdAt = item.createdAt;
+  row.dataset.spentAt = item.spentAt;
 }
 
 // 画面から行を削除

@@ -8,11 +8,11 @@ import lombok.Data;
 public class ItemBaseResponse {
 
   Long id;
-  
+
   private String name;
 
   private Integer cost;
 
-  LocalDate createdAt;
+  LocalDate spentAt;
 
 }

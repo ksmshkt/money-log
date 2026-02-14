@@ -5,6 +5,7 @@
 export function validateItemForm() {
   const name = document.getElementById("name").value.trim();
   const cost = document.getElementById("cost").value;
+  const spentAt = document.getElementById("spentAt").value;
 
   if (!name) {
     alert("item を入力してください");
@@ -26,13 +27,13 @@ export function validateItemForm() {
     return false;
   }
 
-  if (!createdAt) {
-    alert("createdAt を入力してください");
+  if (!spentAt) {
+    alert("spentAt を入力してください");
     return false;
   }
 
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  if (!dateRegex.test(createdAt)) {
+  if (!dateRegex.test(spentAt)) {
     alert("作成日は yyyy-MM-dd 形式で入力してください");
     return false;
   }
