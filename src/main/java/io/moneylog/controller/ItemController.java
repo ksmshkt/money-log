@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import io.moneylog.form.ItemForm;
 import io.moneylog.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
@@ -43,7 +42,6 @@ public class ItemController {
     ItemSummary itemSummary = itemService.findByYearAndMonth(y, m);
 
     model.addAttribute("items", itemSummary.items());
-    model.addAttribute("itemForm", new ItemForm());
     model.addAttribute("totalCost", itemSummary.totalCost());
     model.addAttribute("currentYear", y);
     model.addAttribute("currentMonth", m);
