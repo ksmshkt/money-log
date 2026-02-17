@@ -26,4 +26,7 @@ public class ItemBaseRequest {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate spentAt;
 
+  @NotNull
+  private Long categoryId;
+
 }

@@ -53,7 +53,8 @@ document.getElementById("itemForm").addEventListener("submit", async function(e)
     id: document.getElementById("id").value.trim(),
     name: document.getElementById("name").value,
     cost: document.getElementById("cost").value,
-    spentAt: document.getElementById("spentAt").value
+    spentAt: document.getElementById("spentAt").value,
+    categoryId: form.categoryId.value
   };
 
   if (data.id) {
@@ -129,11 +130,13 @@ const appendItem = item => {
   tr.dataset.name = item.name;
   tr.dataset.cost = item.cost;
   tr.dataset.spentAt = item.spentAt;
+  tr.dataset.categoryId = item.categoryId;
 
   tr.innerHTML = `
     <td>${item.name}</td>
     <td>${item.cost}</td>
     <td>${item.spentAt}</td>
+    <td>${item.categoryName}</td>
   `;
 
   tbody.prepend(tr);
@@ -148,10 +151,12 @@ function updateRow(item) {
   tds[0].textContent = item.name;
   tds[1].textContent = item.cost;
   tds[2].textContent = item.spentAt;
+  tds[3].textContent = item.categoryName;
 
   row.dataset.name = item.name;
   row.dataset.cost = item.cost;
   row.dataset.spentAt = item.spentAt;
+  row.dataset.spentAt = item.categoryId;
 }
 
 // 画面から行を削除

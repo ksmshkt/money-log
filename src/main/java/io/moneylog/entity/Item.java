@@ -14,6 +14,6 @@ public record Item(
         Long categoryId,
 
         String categoryName
-        
+
 ) {
 }

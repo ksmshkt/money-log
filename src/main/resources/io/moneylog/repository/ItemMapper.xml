@@ -2,34 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.moneylog.repository.ItemMapper">
 
-  <select id="findByYearAndMonth" resultType="io.moneylog.entity.Item">
-    SELECT
+  <sql id="BaseItemColumns">
     i.id,
     i.name,
     i.cost,
     i.spent_at,
     i.category_id,
     c.name AS category_name
+  </sql>
+
+  <select id="findByYearAndMonth" resultType="io.moneylog.entity.Item">
+    SELECT
+    <include refid="BaseItemColumns"/>
     FROM items i
     JOIN categories c ON i.category_id = c.id
     WHERE EXTRACT(YEAR FROM i.spent_at) = #{year}
     AND EXTRACT(MONTH FROM i.spent_at) = #{month}
     ORDER BY i.spent_at DESC
   </select>
-  
+
   <select id="selectById" resultType="io.moneylog.entity.Item">
-    SELECT id, name, cost, spent_at FROM items WHERE id = #{id};
+    SELECT
+    <include refid="BaseItemColumns"/>
+    FROM items i
+    JOIN categories c ON i.category_id = c.id
+    WHERE i.id = #{id}
   </select>
 
   <select id="insert" resultType="io.moneylog.entity.Item">
-    INSERT INTO items (name, cost, spent_at)
-    VALUES (#{name}, #{cost}, #{spentAt})
-    RETURNING id, name, cost, spent_at
+    INSERT INTO items (name, cost, spent_at, category_id)
+    VALUES (#{name}, #{cost}, #{spentAt}, #{categoryId})
+    RETURNING id, name, cost, spent_at, category_id
   </select>
 
   <update id="update">
     UPDATE items
-    SET name = #{name}, cost = #{cost}, spent_at = #{spentAt}
+    SET name = #{name}, cost = #{cost}, spent_at = #{spentAt}, category_id = #{categoryId}
     WHERE id = #{id}
   </update>
 

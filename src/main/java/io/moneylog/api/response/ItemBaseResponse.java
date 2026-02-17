@@ -13,6 +13,10 @@ public class ItemBaseResponse {
 
   private Integer cost;
 
-  LocalDate spentAt;
+  private LocalDate spentAt;
+
+  private Long categoryId;
+
+  private String categoryName;
 
 }
