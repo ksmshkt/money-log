@@ -29,10 +29,10 @@
     WHERE i.id = #{id}
   </select>
 
-  <select id="insert" resultType="io.moneylog.entity.Item">
+  <select id="insert">
     INSERT INTO items (name, cost, spent_at, category_id)
     VALUES (#{name}, #{cost}, #{spentAt}, #{categoryId})
-    RETURNING id, name, cost, spent_at, category_id
+    RETURNING id
   </select>
 
   <update id="update">

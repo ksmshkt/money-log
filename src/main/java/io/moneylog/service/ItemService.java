@@ -36,10 +36,10 @@ public class ItemService {
   @Transactional
   public ItemBaseResponse add(ItemBaseRequest request) {
 
-    Item item = itemMapper.insert(request.getName(), request.getCost(), request.getSpentAt(), request.getCategoryId());
-
+    Long id = itemMapper.insert(request.getName(), request.getCost(), request.getSpentAt(), request.getCategoryId());
+    
     ItemBaseResponse res = new ItemBaseResponse();
-    BeanUtils.copyProperties(item, res);
+    BeanUtils.copyProperties(itemMapper.selectById(id), res);
 
     return res;
   }

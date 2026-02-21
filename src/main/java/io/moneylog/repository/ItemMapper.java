@@ -13,7 +13,7 @@ public interface ItemMapper {
 
   List<Item> findByYearAndMonth(@Param("year") int year, @Param("month") int month);
 
-  Item insert(@Param("name") String name, @Param("cost") Integer cost, @Param("spentAt") LocalDate spentAt, @Param("categoryId") Long categoryId);
+  Long insert(@Param("name") String name, @Param("cost") Integer cost, @Param("spentAt") LocalDate spentAt, @Param("categoryId") Long categoryId);
 
   Item selectById(@Param("id") Long id);
 
