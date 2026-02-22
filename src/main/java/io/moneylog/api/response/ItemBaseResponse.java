@@ -19,4 +19,6 @@ public class ItemBaseResponse {
 
   private String categoryName;
 
+  private String categoryColor;
+
 }

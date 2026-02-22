@@ -10,7 +10,7 @@ import io.moneylog.entity.Category;
 public interface CategoryMapper {
 
   @Select("""
-              SELECT id, name
+              SELECT id, name, color
               FROM categories
               ORDER BY id
           """)

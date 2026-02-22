@@ -13,7 +13,9 @@ public record Item(
 
         Long categoryId,
 
-        String categoryName
+        String categoryName,
+
+        String categoryColor
 
 ) {
 }

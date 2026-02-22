@@ -59,6 +59,7 @@ export function appendItem(item) {
   tr.dataset.cost = item.cost;
   tr.dataset.spentAt = item.spentAt;
   tr.dataset.categoryId = item.categoryId;
+  tr.style.borderLeft = `6px solid ${item.categoryColor}`;
 
   tr.innerHTML = `
     <td>${item.name}</td>
@@ -85,6 +86,7 @@ export function updateRow(item) {
   row.dataset.cost = item.cost;
   row.dataset.spentAt = item.spentAt;
   row.dataset.categoryId = item.categoryId;
+  row.style.borderLeft = `6px solid ${item.categoryColor}`;
 }
 
 // テーブル要素削除

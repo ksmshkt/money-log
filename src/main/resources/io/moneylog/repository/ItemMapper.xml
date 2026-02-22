@@ -8,8 +8,17 @@
     i.cost,
     i.spent_at,
     i.category_id,
-    c.name AS category_name
+    c.name AS category_name,
+    c.color AS category_color
   </sql>
+
+  <select id="selectById" resultType="io.moneylog.entity.Item">
+    SELECT
+    <include refid="BaseItemColumns"/>
+    FROM items i
+    JOIN categories c ON i.category_id = c.id
+    WHERE i.id = #{id}
+  </select>
 
   <select id="findByYearAndMonth" resultType="io.moneylog.entity.Item">
     SELECT
@@ -19,14 +28,6 @@
     WHERE EXTRACT(YEAR FROM i.spent_at) = #{year}
     AND EXTRACT(MONTH FROM i.spent_at) = #{month}
     ORDER BY i.spent_at DESC
-  </select>
-
-  <select id="selectById" resultType="io.moneylog.entity.Item">
-    SELECT
-    <include refid="BaseItemColumns"/>
-    FROM items i
-    JOIN categories c ON i.category_id = c.id
-    WHERE i.id = #{id}
   </select>
 
   <select id="insert">
@@ -45,5 +46,6 @@
     DELETE FROM items
     WHERE id = #{id}
   </delete>
+
 
 </mapper>

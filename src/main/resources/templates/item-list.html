@@ -53,7 +53,12 @@
             <td th:text="${item.name}"></td>
             <td th:text="${item.cost}"></td>
             <td th:text="${item.spentAt}"></td>
-            <td th:text="${item.categoryName}"></td>
+            <td>
+              <span class="category-badge"
+                    th:text="${item.categoryName}"
+                    th:style="|background-color: ${item.categoryColor}|">
+              </span>
+            </td>
           </tr>
         </tbody>
       </table>
