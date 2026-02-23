@@ -1,4 +1,6 @@
 const overlay = document.getElementById("modalOverlay");
+const categorySelect = document.getElementById("categoryId");
+const categoryPreview = document.getElementById("categoryPreview");
 const form = document.getElementById("itemForm");
 const deleteBtn = document.getElementById("deleteBtn");
 const closeBtn = document.getElementById("closeModalBtn");
@@ -15,9 +17,19 @@ overlay.addEventListener("click", (e) => {
   if (e.target === overlay) closeModal();
 });
 
+// カテゴリ選択時の色同期
+const updateCategoryPreview = () => {
+  const selectedOption = categorySelect.selectedOptions[0];
+  const color = selectedOption?.dataset.color;
+  categoryPreview.style.backgroundColor = color || "#ccc";
+}
+
+categorySelect.addEventListener("change", updateCategoryPreview);
+
 // モーダル表示（追加時）
 export const showAddModal = () => {
   form.reset();
+  categoryPreview.style.backgroundColor = "#ccc";
   deleteBtn.style.display = "none";
   spentAtInput.value = new Date().toISOString().split("T")[0];
   openModal();
@@ -31,7 +43,9 @@ export const showEditModal = (row) => {
   form.name.value = name;
   form.cost.value = cost;
   form.spentAt.value = spentAt;
-  form.categoryId.value = categoryId;
+  categorySelect.value = row.dataset.categoryId;
+
+  updateCategoryPreview();
 
   deleteBtn.style.display = "inline-block";
   openModal();

@@ -5,7 +5,6 @@
   margin: 40px auto;
 }
 
-/* テーブル */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -41,26 +40,32 @@ tr[data-item]:hover {
   background: #f5f5f5;
 }
 
-/* モーダル */
 .modal-window {
   background: white;
-  padding: 20px;
-  width: 350px;
-  border-radius: 8px;
+  padding: 24px;
+  width: 380px;
+  border-radius: 12px;
   position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.15s ease-out;
 }
 
 .modal-overlay {
   display: none;
-  /* 初期は非表示 */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
   justify-content: center;
   align-items: center;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 .close-btn {
@@ -75,10 +80,29 @@ tr[data-item]:hover {
   margin-bottom: 15px;
 }
 
-input {
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+input,
+select {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
 .form-actions {
@@ -92,13 +116,12 @@ input {
   color: #fff;
 }
 
-/* 追加ボタン */
 .icon-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: #2563eb; /* 落ち着いたブルー */
+  background: #2563eb;
   color: #fff;
   font-size: 22px;
   font-weight: 600;
@@ -175,4 +198,18 @@ input {
   font-size: 12px;
   font-weight: 500;
   color: white;
+}
+
+.category-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ccc;
+  flex-shrink: 0;
 }

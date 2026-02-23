@@ -22,15 +22,19 @@
 
         <div class="form-group">
           <label>category</label>
-          <select id="categoryId" required>
-            <option value="">-- select --</option>
-            <option th:each="c : ${categories}"
-                    th:value="${c.id}"
-                    th:text="${c.name}">
-            </option>
-          </select>
+          <div class="category-select-wrapper">
+            <span id="categoryPreview" class="category-dot"></span>
+            <select id="categoryId" required>
+              <option value="">-- select --</option>
+              <option th:each="c : ${categories}"
+                      th:value="${c.id}"
+                      th:text="${c.name}"
+                      th:data-color="${c.color}">
+              </option>
+            </select>
+          </div>
         </div>
-        
+
         <div class="form-actions">
           <button type="submit">save</button>
           <button type="button" id="deleteBtn" class="danger">delete</button>
