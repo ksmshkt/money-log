@@ -107,12 +107,25 @@ select:focus {
 
 .form-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12px;
   margin-top: 16px;
 }
 
-.form-actions .danger {
-  background-color: #e74c3c;
+.form-actions .btn {
+  width: 30%;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+.form-actions .btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+}
+
+.form-actions .btn-danger {
+  background-color: #ef4444;
   color: #fff;
 }
 
