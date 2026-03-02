@@ -2,6 +2,18 @@ import { validateItemForm } from "./item-validate.js";
 import { addItem, updateItem, deleteItem } from "./item-api.js";
 import { form, deleteBtn, showAddModal, showEditModal, closeModal } from "./item-modal.js";
 
+const monthPicker = document.getElementById("monthPicker");
+
+// カレンダー年月選択時
+if (monthPicker) {
+  monthPicker.addEventListener("change", () => {
+    const [year, month] = monthPicker.value.split("-");
+
+    const url = `/money-log/items?year=${year}&month=${parseInt(month)}`;
+    window.location.href = url;
+  });
+}
+
 // テーブルクリック（編集時）
 document.getElementById("items-body").addEventListener("click", e => {
   const row = e.target.closest('[data-item]');

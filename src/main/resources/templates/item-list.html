@@ -17,8 +17,11 @@
             ◀ Prev
           </a>
 
-          <span class="month-title"
-                th:text="|${currentYear} / ${currentMonth}|"></span>
+          <form id="monthJumpForm" th:action="@{/items}" method="get">
+            <input type="month"
+                   id="monthPicker"
+                   th:value="|${currentYear}-${#numbers.formatInteger(currentMonth,2)}|">
+          </form>
 
           <a class="month-nav"
              th:href="@{/items(year=${currentYear}, month=${currentMonth + 1})}">
