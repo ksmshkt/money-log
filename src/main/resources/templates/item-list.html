@@ -6,6 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script type="module" th:src="@{/js/item.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -32,39 +33,58 @@
         <div class="summary">
           Total <strong th:text="|¥ ${totalCost}|"></strong>
         </div>
+
       </div>
 
-      <button id="itemAdd" class="icon-btn" data-modal-open data-mode="create">＋</button>
-      <div th:replace="fragments/item-modal :: item-modal"></div>
-      <table>
-        <thead>
-          <tr>
-            <th>item</th>
-            <th>cost (¥)</th>
-            <th>date</th>
-            <th>category</th>
-          </tr>
-        </thead>
-        <tbody id="items-body">
-          <tr th:each="item : ${items}" data-item
-              th:data-id="${item.id}"
-              th:data-name="${item.name}"
-              th:data-cost="${item.cost}"
-              th:data-spent-at="${item.spentAt}"
-              th:data-category-id="${item.categoryId}"
-          >
-            <td th:text="${item.name}"></td>
-            <td th:text="${item.cost}"></td>
-            <td th:text="${item.spentAt}"></td>
-            <td>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="list">List</button>
+        <button class="tab-btn" data-tab="summary">Summary</button>
+      </div>
+
+      <div id="list-view">
+        <button id="itemAdd" class="icon-btn" data-modal-open data-mode="create">＋</button>
+        <div th:replace="fragments/item-modal :: item-modal"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>item</th>
+              <th>cost (¥)</th>
+              <th>date</th>
+              <th>category</th>
+            </tr>
+          </thead>
+          <tbody id="items-body">
+            <tr th:each="item : ${items}" data-item
+                th:data-id="${item.id}"
+                th:data-name="${item.name}"
+                th:data-cost="${item.cost}"
+                th:data-spent-at="${item.spentAt}"
+                th:data-category-id="${item.categoryId}"
+            >
+              <td th:text="${item.name}"></td>
+              <td th:text="${item.cost}"></td>
+              <td th:text="${item.spentAt}"></td>
+              <td>
               <span class="category-badge"
                     th:text="${item.categoryName}"
                     th:style="|background-color: ${item.categoryColor}|">
               </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script th:inline="javascript">
+        const items = [[${items}]];
+      </script>
+
+      <div id="summary-view">
+        <div class="chart-wrapper">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+
     </div>
   </body>
 
