@@ -138,3 +138,24 @@ http://localhost:8080
 ```
 https://github.com/ksmshkt
 ```
+
+## Database ER Diagram
+
+```mermaid
+erDiagram
+    Item {
+        Long id PK
+        String name
+        Integer cost
+        LocalDate spentAt
+        Long categoryId FK
+    }
+
+    Category {
+        Long id PK
+        String name
+        String color
+    }
+
+    Item }o--|| Category : belongs_to
+```
