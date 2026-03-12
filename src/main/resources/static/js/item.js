@@ -7,6 +7,15 @@ const listView = document.getElementById("list-view");
 const summaryView = document.getElementById("summary-view");
 const tabButtons = document.querySelectorAll(".tab-btn");
 let chartInstance;
+const costInput = document.getElementById("cost");
+
+document.querySelectorAll(".quick-cost button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const add = Number(btn.dataset.add);
+    costInput.value = Number(costInput.value || 0) + add;
+  });
+});
+
 
 // カレンダー年月選択時
 if (monthPicker) {

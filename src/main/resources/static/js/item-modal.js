@@ -33,6 +33,7 @@ export const showAddModal = () => {
   deleteBtn.style.display = "none";
   spentAtInput.value = new Date().toISOString().split("T")[0];
   openModal();
+  document.getElementById("name").focus();
 };
 
 // モーダル表示（編集時）
