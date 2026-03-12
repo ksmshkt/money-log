@@ -66,6 +66,16 @@ deleteBtn.addEventListener("click", async () => {
 
 // テーブルに要素追加
 export function appendItem(item) {
+  const [year, month] = monthPicker.value.split("-");
+
+    const itemDate = new Date(item.spentAt);
+    const itemYear = itemDate.getFullYear();
+    const itemMonth = itemDate.getMonth() + 1;
+
+    if (itemYear != year || itemMonth != month) {
+      return;
+    }
+
 　items.unshift(item);
 
   const tbody = document.getElementById('items-body');
