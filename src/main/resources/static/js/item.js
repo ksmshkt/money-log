@@ -217,7 +217,14 @@ function createChart(items) {
       }]
     },
     options: {
-      responsive: true
+      responsive: true,
+          maintainAspectRatio: false, // 親の高さ・幅に合わせる
+          layout: {
+            padding: {
+              left: 0,
+              right: 0
+            }
+          }
     }
   });
 }
